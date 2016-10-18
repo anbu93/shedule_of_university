@@ -1,14 +1,10 @@
 # coding=utf-8
-import Event
-from Database import app, db
+from models import *
 from flask import render_template, request
-from Event import Event
 
-from Teacher import Teacher
-from Place import Place
-from Group import Group
-from Subject import Subject
-from DatabaseQuery import getGroupById, getPlaceById, getSubjectById, getTeacherById, getDateFromHtmlDate, getEventById
+from Database import app, db
+from DatabaseQuery import getGroupById, getPlaceById, getSubjectById, getTeacherById, getDateFromHtmlDate, getEventById, getEventTime
+from models.Subject import Subject
 
 
 @app.route("/events", methods=["GET"])
@@ -39,13 +35,14 @@ def addEventsPagePost():
     place = getPlaceById(request.form["place"])
     date = getDateFromHtmlDate(request.form["date"])
     number = int(request.form["number"])
+    event_time = getEventTime(date, number)
     if teacher is not None \
             and subject is not None \
             and group is not None \
             and place is not None \
             and date is not None \
             and number is not None:
-        event = Event(teacher, subject, group, place, date, number)
+        event = Event.Event(teacher, subject, group, place, event_time)
         db.session.add(event)
         db.session.commit()
         result = "Ok"

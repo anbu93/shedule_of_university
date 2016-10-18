@@ -1,11 +1,12 @@
 # coding=utf-8
-from flask import render_template
-from Database import app, db
-from EventTime import EventTime
 from Event import Event
 from Group import Group
 from Place import Place
 from Teacher import Teacher
+from flask import render_template
+
+from Database import app
+from models.EventTime import EventTime
 
 
 class TableManager:
@@ -57,7 +58,7 @@ class TableManager:
             else:
                 raise Exception("Неправильный тип строк")
             if column_type is "datetime":
-                column = event.datetime.toString()
+                column = event.event_time.toString()
             else:
                 raise Exception("Неправильный тип колонки")
             self.values[row][column] = event.toString()

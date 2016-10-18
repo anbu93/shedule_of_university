@@ -1,7 +1,8 @@
 # coding=utf-8
-from Database import app, db
 from flask import render_template, request
-from Teacher import Teacher
+
+from Database import app, db
+from models.Teacher import Teacher
 
 
 def getTeachers():

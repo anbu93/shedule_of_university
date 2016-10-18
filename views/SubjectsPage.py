@@ -1,7 +1,8 @@
 # coding=utf-8
-from Database import db, app
 from flask import render_template, request
-from Subject import Subject
+
+from Database import db, app
+from models.Subject import Subject
 
 
 @app.route("/subjects", methods=["GET", "POST"])

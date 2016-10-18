@@ -1,14 +1,8 @@
 # coding=utf-8
-from Database import app, db
 from flask import render_template
-import TeachersPage
-import EventsPage
-import GroupsPage
-import PlacePage
-import SubjectsPage
-import EventTime
-# import TableView
-import TableManager
+
+from Database import app, db
+import views
 
 
 @app.route("/", methods=["GET"])

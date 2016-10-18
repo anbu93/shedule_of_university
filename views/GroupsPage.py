@@ -1,6 +1,7 @@
-from Database import db, app
 from flask import render_template, request
-from Group import Group
+
+from Database import db, app
+from models.Group import Group
 
 
 @app.route("/groups", methods=["GET", "POST"])

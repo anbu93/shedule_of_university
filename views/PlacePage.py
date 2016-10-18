@@ -1,6 +1,7 @@
-from Database import app, db
 from flask import request, render_template
-from Place import Place
+
+from Database import app, db
+from models.Place import Place
 
 
 @app.route("/place", methods=["POST", "GET"])

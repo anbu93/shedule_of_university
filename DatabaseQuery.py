@@ -1,9 +1,11 @@
+import EventTime
+from Event import Event
 from Group import Group
 from Place import Place
-from Subject import Subject
 from Teacher import Teacher
-from Event import Event
-from datetime import date
+
+from Database import db
+from models.Subject import Subject
 
 
 def getTeacherById(id_str):
@@ -27,10 +29,23 @@ def getPlaceById(id_str):
 
 
 def getDateFromHtmlDate(date_str):
-    dates = date_str.split('/')
-    return date(int(dates[2]), int(dates[1]), int(dates[0]))
+    dates = EventTime.Date.query.all()
+    new_date = EventTime.Date(date_str)
+    for d in dates:
+        if d.equals(new_date):
+            return new_date
+    db.session.add(new_date)
+    db.session.commit()
+    return new_date
 
 
 def getEventById(id_str):
     _id = int(id_str)
     return Event.query.filter_by(id=_id).first()
+
+
+def getEventTime(date, time):
+    event_time = EventTime.EventTime.query.filter_by(time=time).filter_by(date_id=date.id).first()
+    if event_time is None:
+        event_time = EventTime.EventTime(date, time)
+    return event_time
