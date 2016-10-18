@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Предметы</title>
+</head>
+<body>
+    <a href="http://127.0.0.1:5000/">Назад на главную</a>
+    <h1>Учебные предметы</h1>
+    <div class="subject_edit">
+        {% if type == "show" %}
+
+        {% elif type == "add" %}
+            <form method="post">
+                <label for="name">Название предмета: </label> <input name="name" type="text"><br>
+                <input type="submit" value="Добавить предмет">
+            </form>
+        {% elif type == "remove" %}
+            <form method="post">
+                <label for="id">Идентификатор предмета: </label> <input name="id" type="text"><br>
+                <input type="submit" value="Добавить предмет">
+            </form>
+        {% endif %}
+        <br>
+        {% if result == None %}
+        {% elif result == "Ok" %}
+            <p style="color:green">Команда успешно выполнена.</p>
+        {% else %}
+            <p style="color:darkred"> Ошибка при выполнении команды: {{ result }} </p>
+        {% endif %}
+    </div>
+    <br>
+    <div class="subjects_list">
+        {% for subject in subjects %}
+            <div class="subject">
+                #{{ subject.id }}: {{ subject.name }}
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

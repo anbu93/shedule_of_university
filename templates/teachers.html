@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Преподователи</title>
+</head>
+<body>
+    <a href="http://127.0.0.1:5000/">Назад на главную</a>
+    <h1>Список преподавателей</h1>
+    <div class="teacher_edit">
+        {% if isAddTeacherPage %}
+            <p>Добавление нового преподавателя: </p>
+            <form method="POST">
+                <label for="name">Фамилия: </label><input name="surname" type="text"><br>
+                <label for="surname">Имя: </label><input name="name" type="text"><br>
+                <label for="lastname">Отчество: </label><input name="lastname" type="text"><br>
+                <input type="submit" value="Зарегистрировать">
+            </form>
+        {% else %}
+            <form method="post">
+                <label for="id">Идентификатор: </label><input name="id" type="text">
+                <input type="submit" value="Удалить">
+            </form>
+        {% endif %}
+
+        {% if result != None %}
+            <p>{{ result }}.</p>
+        {% endif %}
+    </div>
+    <div class="teacher_list">
+    {% for teacher in teachers %}
+        <div class="teacher">
+            Преподаватель #{{ teacher.id }}: {{ teacher.fullName() }}
+        </div>
+    {% endfor %}
+    </div>
+</body>
+</html>

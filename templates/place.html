@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Места</title>
+</head>
+<body>
+    <a href="http://127.0.0.1:5000/">Назад на главную</a>
+    <h1>Места</h1>
+    <div class="edit">
+        {% if type == "show" %}
+            <!-- Показывать список -->
+        {% elif type == "add" %}
+            <form method="post">
+                <label for="name">Название: </label><input name="name" type="text"><br>
+                <input type="submit" value="Добавить место">
+            </form>
+        {%  elif type == "remove" %}
+            <form method="post">
+                <label for="id">Идентификатор: </label><input name="id" type="text"><br>
+                <input type="submit" value="Удалить место">
+            </form>
+        {% endif %}
+        {% if result == None %}
+        {% elif result == "Ok" %}
+            <p>Команда выполнена удачно</p>
+        {% else %}
+            <p>Команда не выполнена: {{ result }} </p>
+        {%  endif %}
+    </div>
+    <br>
+    <div class="place_list">
+        {% for place in places %}
+            <div class="place">
+                #{{ place.id }}: {{ place.name }}
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

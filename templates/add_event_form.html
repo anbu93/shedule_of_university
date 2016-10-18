@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление занятия</title>
+</head>
+<body>
+    <div class="add_user">
+		<p>Добавить новое занятие:</p>
+		<form method="POST">
+			<label for="name">Название: </label><input name="name" type="text" > <br>
+			<label for="teacher">Преподователь: </label><input name="teacher" type="text"> <br>
+			<label for="group">Группа: </label><input name="group" type="text"> <br>
+			<label for="place">Место: </label><input name="place" type="text"> <br>
+			<label for="date">Дата: </label><input name="date" type="tetx"> <br>
+			<label for="number_of_lesson">Номер занятия: </label><input name="number_of_lesson" type="text"> <br>
+
+			<input type="submit" value="Создать занятие">
+		</form>
+	</div>
+    {% if result != None %}
+        <div class="succesful_add_event">
+            <p>Занятие успешно добавлено.</p>
+            <p>
+                Идентификатор: {{ event.id }} <br>
+                Название: {{ event.name }} <br>
+                Преподователь: {{ event.teacher }} <br>
+                Группа: {{ event.group }} <br>
+                Место: {{ event.place }} <br>
+                Дата: {{ event.date }} <br>
+                Номер занятия: {{ event.number_of_lesson}}
+            </p>
+        </div>
+    {% endif %}
+    <a href="http://127.0.0.1:5000/">Назад на главную</a>
+</body>
+</html>

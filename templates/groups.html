@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Группы</title>
+</head>
+<body>
+    <a href="http://127.0.0.1:5000/">Назад на главную</a>
+    <h3>Группы</h3>
+
+    <div class="group_edit">
+        {% if type == "show" %}
+        <!-- Просто показать группы -->
+        {% elif type == "remove" %}
+            <p>Удалить группу</p>
+            <form method="post">
+                <label for="id">Идентификатор: </label> <input name="id" type="text"><br>
+                <input type="submit" value="Удалить группу">
+            </form>
+        {% elif type == "add" %}
+            <p>Добавить группу</p>
+            <form method="post">
+                <label for="name">Название группы: </label> <input name="name" type="text"><br>
+                <input type="submit" value="Добавить группу">
+            </form>
+    {% endif %}
+    </div>
+    <br>
+    <div class="group_list">
+        {% for group in groups %}
+            <div class="group">
+                #{{ group.id }}: {{ group.name }}
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

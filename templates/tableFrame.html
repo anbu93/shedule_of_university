@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Table</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+        }
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            width: 100px;
+            height: 75px;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        td {
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>
+                {{ row_by }}
+            </th>
+            {% for column in column_list %}
+            <th>{{ column }}</th>
+            {% endfor %}
+        </tr>
+        {% for row in row_list %}
+        <tr>
+            <td>
+                {{ row }}
+            </td>
+            {% for column in column_list %}
+                <td>{{ table[row][column] }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

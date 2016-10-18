@@ -1,0 +1,40 @@
+{% extends "events.html" %}
+
+{% block content %}
+
+    <p>Создание занятия:</p>
+    <form method="post">
+        <label for="teacher">Выберите преподавателя: </label>
+        <select name="teacher">
+            {% for teacher in teachers %}
+                <option value="{{ teacher.id }}">{{ teacher.shortName() }}</option>
+            {% endfor %} </select><br>
+        <label for="subject">Выберите занятие:</label>
+        <select name="subject">
+            {% for subject in subjects %}
+                <option value="{{ subject.id }}">{{ subject.name }}</option>
+            {% endfor %}</select><br>
+        <label for="group">Выберите группу: </label>
+        <select name="group">
+            {% for group in groups %}
+                <option value="{{ group.id }}">{{ group.name }}</option>
+            {% endfor %}</select><br>
+        <label for="place">Выберите группу: </label>
+        <select name="place">
+            {% for place in places %}
+                <option value="{{ place.id }}">{{ place.name }}</option>
+            {% endfor %}</select><br>
+        <label for="date">Выберите дату:</label>
+        <input name="date" type="text"><br>
+        <label for="number">Выберите номер занятия:</label>
+        <select name="number">
+            <option value="1">08:00-09:35</option>
+            <option value="2">09:50-11:25</option>
+            <option value="3">11:40-13:15</option>
+            <option value="4">14:00-15:35</option>
+            <option value="5">15:45-17:20</option>
+            <option value="6">17:30-19:05</option>
+        </select><br>
+        <input type="submit" value="Создать занятие">
+    </form>
+{% endblock %}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Все занятия</title>
+</head>
+<body>
+    <a href="http://127.0.0.1:5000/">Назад на главную</a>
+    <div class="create_block">
+        {% block content %}
+   {% endblock %}
+
+    {% if result == None %}
+    {% elif result == "Ok" %}
+        <p style="color:green">Запрос успешно выполнен</p>
+    {% else %}
+        <p style="color:darkred">Ошибка при выполнении запроса: {{ result }}</p>
+    {% endif %}
+    </div>
+    <br>
+    <div class="events_block">
+        <p>Занятия:</p>
+        {% for event in events %}
+            <div class="event">
+                <p>
+                Идентификатор: {{ event.id }} <br>
+                Название: {{ event.subject.name }} <br>
+                Преподователь: {{ event.teacher.shortName() }} <br>
+                Группа: {{ event.group.name }} <br>
+                Место: {{ event.place.name }} <br>
+                Дата: {{ event.date }} <br>
+                Номер занятия: {{ event.number_of_lesson }}
+                </p>
+                <br>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

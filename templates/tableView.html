@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Расписание</title>
+    <script type="text/javascript" src="../static/jquery-3.1.1.js" />
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("submit").on("click", function(){
+
+            });
+        });
+    </script>
+</head>
+<body>
+
+<h1>Расписание</h1>
+<form method="post">
+    <label for="row">Строки: </label>
+    <select name="row">
+        <option value="group">Группы</option>
+        <option value="teacher">Преподаватели</option>
+        <option value="place">Кабинеты</option>
+    </select>
+    <br>
+    <label for="column">Колонки</label>
+    <select name="column">
+        <option value="datetime">Время и дата</option>
+    </select>
+    <br>
+    <input type="submit" value="Запрос">
+</form>
+<iframe id="frame" src="/table/frame/{{ row }}/{{ column }}" width="100%" height="500px" align="left">
+    Ваш браузер не поддерживает плавающие фреймы!
+</iframe>
+<br>
+<a href="/">Назад на главную</a>
+
+</body>
+</html>
